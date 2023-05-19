@@ -28,7 +28,7 @@ export default function Home() {
 
 		console.log();
 
-		const animation = hertaDoc.animate([{}, {}, { transform: "translateX(-200%)" }], (hertasContainer.clientWidth / 1000) * 2000);
+		const animation = hertaDoc.animate([{}, {}, { transform: "translateX(-200%)" }], (hertasContainer.clientWidth / 750) * 2000);
 
 		animation.onfinish = () => {
 			hertaDoc.remove();
