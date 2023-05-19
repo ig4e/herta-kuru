@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 export default function Home() {
-	const [count, setCount] = useState(Number(localStorage.getItem("count")) || 0);
+	const [count, setCount] = useState(typeof window !== "undefined" ? Number(localStorage.getItem("count")) || 0 : 0);
 
 	function increaseCount() {
 		playKuru();
