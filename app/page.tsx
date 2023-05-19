@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 export default function Home() {
-	const audioList = [new Audio("audio/kuruto.mp3"), new Audio("audio/kuru1.mp3"), new Audio("audio/kuru2.mp3")];
 	const [count, setCount] = useState(Number(localStorage.getItem("count")) || 0);
 
 	function increaseCount() {
@@ -39,10 +38,14 @@ export default function Home() {
 	}
 
 	async function playKuru() {
-		const audio = audioList[Math.floor(Math.random() * audioList.length)].cloneNode() as HTMLAudioElement;
-		audio.volume = 0.8;
+		if (typeof window !== "undefined") {
+			const audioList = [new Audio("audio/kuruto.mp3"), new Audio("audio/kuru1.mp3"), new Audio("audio/kuru2.mp3")];
 
-		return audio.play();
+			const audio = audioList[Math.floor(Math.random() * audioList.length)].cloneNode() as HTMLAudioElement;
+			audio.volume = 0.8;
+
+			return audio.play();
+		}
 	}
 
 	useEffect(() => {
